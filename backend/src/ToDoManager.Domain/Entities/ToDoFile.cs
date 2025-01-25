@@ -2,7 +2,7 @@
 
 namespace ToDoManager.Domain.Entities;
 
-public class File : BaseEntity
+public class ToDoFile : BaseEntity
 {
     public string Name { get; set; }
     public string Path { get; set; }
