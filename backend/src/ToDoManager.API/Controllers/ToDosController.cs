@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ToDoManager.Application.Features.ToDos.Commands.Create;
 using ToDoManager.Application.Features.ToDos.Commands.Delete;
+using ToDoManager.Application.Features.ToDos.Commands.Update;
 
 namespace ToDoManager.API.Controllers;
 
@@ -23,8 +24,12 @@ public class ToDosController : ControllerBase
         return Ok(response);
     }
 
-
-
+    [HttpPost("{id:Guid}")]
+    public async Task<ActionResult<UpdateToDoResponse>> Update(Guid id, UpdateToDoInternalRequest request, CancellationToken cancellationToken)
+    {
+        var response = await _mediator.Send(new UpdateToDoInternalRequest(id, request.Name, request.StatusId), cancellationToken);
+        return Ok(response);
+    }
 
     [HttpDelete("{id:Guid}")]
     public async Task<ActionResult<DeleteToDoResponse>> Delete(Guid id, CancellationToken cancellationToken)
