@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using ToDoManager.Application.Repositories;
 using ToDoManager.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using ToDoManager.Application.Interfaces.Repositories;
 
 namespace ToDoManager.Infrastructure;
 

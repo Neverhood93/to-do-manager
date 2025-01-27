@@ -1,4 +1,4 @@
-﻿using ToDoManager.Application.Repositories;
+﻿using ToDoManager.Application.Interfaces.Repositories;
 using ToDoManager.Domain.Entities;
 
 namespace ToDoManager.Infrastructure.Repositories;
