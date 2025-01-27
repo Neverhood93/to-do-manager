@@ -1,8 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using ToDoManager.Application.Features.ToDos.Commands.Create;
-using ToDoManager.Application.Features.ToDos.Commands.Delete;
-using ToDoManager.Application.Features.ToDos.Commands.Update;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace ToDoManager.API.Controllers;
 
@@ -10,31 +6,28 @@ namespace ToDoManager.API.Controllers;
 [Route("api/todo")]
 public class ToDosController : ControllerBase
 {
-    private readonly IMediator _mediator;
-
-    public ToDosController(IMediator mediator)
+    public ToDosController()
     {
-        _mediator = mediator;
     }
 
-    [HttpPost]
-    public async Task<ActionResult<CreateToDoResponse>> Create(CreateToDoRequest request, CancellationToken cancellationToken = default)
-    {
-        var response = await _mediator.Send(request, cancellationToken);
-        return Ok(response);
-    }
+    //[HttpPost]
+    //public async Task<ActionResult<CreateToDoResponse>> Create(CreateToDoRequest request, CancellationToken cancellationToken = default)
+    //{
 
-    [HttpPost("{id:Guid}")]
-    public async Task<ActionResult<UpdateToDoResponse>> Update(Guid id, UpdateToDoInternalRequest request, CancellationToken cancellationToken)
-    {
-        var response = await _mediator.Send(new UpdateToDoInternalRequest(id, request.Name, request.StatusId), cancellationToken);
-        return Ok(response);
-    }
+    //    return Ok(response);
+    //}
 
-    [HttpDelete("{id:Guid}")]
-    public async Task<ActionResult<DeleteToDoResponse>> Delete(Guid id, CancellationToken cancellationToken)
-    {
-        var response = await _mediator.Send(new DeleteToDoRequest(id), cancellationToken);
-        return Ok(response);
-    }
+    //[HttpPost("{id:Guid}")]
+    //public async Task<ActionResult<UpdateToDoResponse>> Update(Guid id, UpdateToDoInternalRequest request, CancellationToken cancellationToken)
+    //{
+    //    var response = await _mediator.Send(new UpdateToDoInternalRequest(id, request.Name, request.StatusId), cancellationToken);
+    //    return Ok(response);
+    //}
+
+    //[HttpDelete("{id:Guid}")]
+    //public async Task<ActionResult<DeleteToDoResponse>> Delete(Guid id, CancellationToken cancellationToken)
+    //{
+    //    var response = await _mediator.Send(new DeleteToDoRequest(id), cancellationToken);
+    //    return Ok(response);
+    //}
 }

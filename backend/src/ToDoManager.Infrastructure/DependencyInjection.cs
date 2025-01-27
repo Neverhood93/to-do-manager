@@ -3,9 +3,6 @@ using Microsoft.Extensions.Configuration;
 using ToDoManager.Application.Repositories;
 using ToDoManager.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using ToDoManager.Application.Services;
-using ToDoManager.Infrastructure.Services;
-using ToDoManager.Infrastructure.Configurations;
 
 namespace ToDoManager.Infrastructure;
 
@@ -21,8 +18,6 @@ public static IServiceCollection AddInfrastructureConfig(this IServiceCollection
     services.AddScoped<IToDoRepository, ToDoRepository>();
     services.AddScoped<IToDoStatusRepository, ToDoStatusRepository>();
     services.AddScoped<IToDoFileRepository, ToDoFileRepository>();
-
-    services.AddSingleton<IFileService, MinioService>();
 
     return services;
 }
