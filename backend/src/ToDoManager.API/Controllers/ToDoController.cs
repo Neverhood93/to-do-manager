@@ -23,8 +23,8 @@ public class ToDoController : ControllerBase
         return Ok(await _service.GetAllAsync());
     }
 
-    [HttpGet("{id:Guid}")]
-    public async Task<IActionResult> GetById(Guid id)
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetById(int id)
     {
         var todo = await _service.GetByIdAsync(id);
         if (todo == null)
@@ -41,14 +41,13 @@ public class ToDoController : ControllerBase
         var created = await _service.CreateAsync(new ToDo() { 
             Name = request.Name, 
             StatusId = request.StatusId,
-            CreatedOn = DateTime.UtcNow,
         });
 
         return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
     }
 
-    [HttpPut("{id:Guid}")]
-    public async Task<IActionResult> Update(Guid id, CreateUpdateToDoRequest request)
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> Update(int id, CreateUpdateToDoRequest request)
     {
         var todo = await _service.GetByIdAsync(id);
         if (todo == null)
@@ -69,8 +68,8 @@ public class ToDoController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id:Guid}")]
-    public async Task<IActionResult> Delete(Guid id)
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete(int id)
     {
         var deleted = await _service.DeleteAsync(id);
         if (!deleted)

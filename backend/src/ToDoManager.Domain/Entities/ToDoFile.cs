@@ -8,6 +8,6 @@ public class ToDoFile : BaseEntity
     public string Path { get; set; }
     public string ContentType { get; set; }
     public int Length { get; set; }
-    public Guid ToDoId { get; set; }
+    public int ToDoId { get; set; }
     public virtual ToDo ToDo { get; set; }
 }

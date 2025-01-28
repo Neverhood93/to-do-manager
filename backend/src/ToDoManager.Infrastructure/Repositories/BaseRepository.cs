@@ -20,7 +20,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
         return await _dbSet.AsNoTracking().ToListAsync(cancellationToken);
     }
 
-    public virtual async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public virtual async Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
     {
         return await _dbSet.FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
     }

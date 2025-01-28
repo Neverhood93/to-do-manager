@@ -19,7 +19,7 @@ internal class ToDoService : IToDoService
         return await _repository.GetAllAsync();
     }
 
-    public async Task<ToDo?> GetByIdAsync(Guid id)
+    public async Task<ToDo?> GetByIdAsync(int id)
     {
         return await _repository.GetByIdAsync(id);
     }
@@ -34,7 +34,7 @@ internal class ToDoService : IToDoService
         return await _repository.UpdateAsync(todo);
     }
 
-    public async Task<bool> DeleteAsync(Guid id)
+    public async Task<bool> DeleteAsync(int id)
     {
         ToDo? entity = await GetByIdAsync(id);
         if (entity == null)

@@ -6,7 +6,7 @@ public interface IBaseRepository<T> where T : BaseEntity
 {
     Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default);
 
-    Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);    
+    Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default);    
 
     Task<T> AddAsync(T entity, CancellationToken cancellationToken = default);
 
