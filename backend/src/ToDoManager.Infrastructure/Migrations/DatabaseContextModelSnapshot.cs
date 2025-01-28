@@ -52,11 +52,9 @@ namespace ToDoManager.Infrastructure.Migrations
 
             modelBuilder.Entity("ToDoManager.Domain.Entities.ToDoFile", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ContentType")
                         .IsRequired()
@@ -65,11 +63,8 @@ namespace ToDoManager.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Length")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
+                    b.Property<long>("Length")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()

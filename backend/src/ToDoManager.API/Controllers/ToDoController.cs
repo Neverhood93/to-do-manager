@@ -1,5 +1,5 @@
-﻿using Azure.Core;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using ToDoManager.API.Interfaces;
 using ToDoManager.API.Models;
 using ToDoManager.Application.Interfaces.Services;
 using ToDoManager.Domain.Entities;
@@ -11,10 +11,12 @@ namespace ToDoManager.API.Controllers;
 public class ToDoController : ControllerBase
 {
     private readonly IToDoService _service;
+    private readonly IFileService _fileService;
 
-    public ToDoController(IToDoService service)
+    public ToDoController(IToDoService service, IFileService fileService)
     {
         _service = service;
+        _fileService = fileService;
     }
 
     [HttpGet]
@@ -75,6 +77,12 @@ public class ToDoController : ControllerBase
         if (!deleted)
         {
             return NotFound();
+        }
+
+        var isDeleteDirectoryFromStorage = _fileService.DeleteDirectory("todo", id);
+        if (!isDeleteDirectoryFromStorage)
+        {
+            return BadRequest("Папка не удалена");
         }
 
         return NoContent();

@@ -2,6 +2,13 @@
 
 namespace ToDoManager.Application.Interfaces.Repositories;
 
-public interface IToDoFileRepository : IBaseRepository<ToDoFile>
+public interface IToDoFileRepository
 {
+    Task<IEnumerable<ToDoFile>> GetAllAsync();
+
+    Task<ToDoFile?> GetByIdAsync(Guid id);
+
+    Task<ToDoFile> AddAsync(ToDoFile entity);
+
+    Task<bool> DeleteAsync(ToDoFile entity);
 }

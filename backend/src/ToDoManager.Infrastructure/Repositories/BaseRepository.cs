@@ -17,7 +17,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 
     public virtual async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default)
     {
-        return await _dbSet.AsNoTracking().ToListAsync(cancellationToken);
+        return await _dbSet.ToListAsync(cancellationToken);
     }
 
     public virtual async Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
@@ -45,8 +45,4 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
         await Context.SaveChangesAsync(cancellationToken);
         return true;
     }
-
-
-
-
 }

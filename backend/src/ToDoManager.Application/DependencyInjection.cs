@@ -9,6 +9,7 @@ public static class DependencyInjection
     public static IServiceCollection AddApplicationConfig(this IServiceCollection services)
     {
         services.AddScoped<IToDoService, ToDoService>();
+        services.AddScoped<IToDoFileService, ToDoFileService>();
 
         return services;
     }

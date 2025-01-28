@@ -1,4 +1,7 @@
-﻿namespace ToDoManager.API;
+﻿using ToDoManager.API.Interfaces;
+using ToDoManager.API.Services;
+
+namespace ToDoManager.API;
 
 public static class DependencyInjection
 {
@@ -10,8 +13,9 @@ public static class DependencyInjection
         });
 
         services.AddEndpointsApiExplorer();
-
         services.AddSwaggerGen();
+
+        services.AddScoped<IFileService, FileService>();
 
         return services;
     }
