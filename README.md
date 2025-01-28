@@ -1,1 +1,1 @@
-# to-do-manager
+# Перед запуском выполнить команду "docker-compose up -d" в папке ".\to-do-manager\backend"
