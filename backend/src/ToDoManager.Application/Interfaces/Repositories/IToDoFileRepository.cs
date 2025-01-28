@@ -8,6 +8,8 @@ public interface IToDoFileRepository
 
     Task<ToDoFile?> GetByIdAsync(Guid id);
 
+    Task<int> GetCountToDoFileByIdAsync(int toDoId);
+
     Task<ToDoFile> AddAsync(ToDoFile entity);
 
     Task<bool> DeleteAsync(ToDoFile entity);

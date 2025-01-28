@@ -12,7 +12,7 @@ using ToDoManager.Infrastructure;
 namespace ToDoManager.Infrastructure.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20250128101323_Init")]
+    [Migration("20250128130702_Init")]
     partial class Init
     {
         /// <inheritdoc />

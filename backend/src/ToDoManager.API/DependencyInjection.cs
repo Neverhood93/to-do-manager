@@ -1,4 +1,5 @@
-﻿using ToDoManager.API.Interfaces;
+﻿using Microsoft.AspNetCore.Http.Features;
+using ToDoManager.API.Interfaces;
 using ToDoManager.API.Services;
 
 namespace ToDoManager.API;
@@ -16,6 +17,11 @@ public static class DependencyInjection
         services.AddSwaggerGen();
 
         services.AddScoped<IFileService, FileService>();
+
+        services.Configure<FormOptions>(options =>
+        {
+            options.MultipartBodyLengthLimit = 200 * 1024 * 1024;
+        });
 
         return services;
     }

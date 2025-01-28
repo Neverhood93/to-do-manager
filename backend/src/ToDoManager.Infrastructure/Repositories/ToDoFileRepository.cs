@@ -26,6 +26,11 @@ public class ToDoFileRepository : IToDoFileRepository
         return await _dbSet.FirstOrDefaultAsync(e => e.Id == id);
     }
 
+    public virtual async Task<int> GetCountToDoFileByIdAsync(int toDoId)
+    {
+        return await _dbSet.Where(f => f.ToDoId == toDoId).CountAsync();
+    }
+
     public virtual async Task<ToDoFile> AddAsync(ToDoFile entity)
     {
         await _dbSet.AddAsync(entity);

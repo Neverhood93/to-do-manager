@@ -11,6 +11,11 @@ builder.Services.AddInfrastructureConfig(configuration);
 builder.Services.AddApplicationConfig();
 builder.Services.AddPresentationConfig();
 
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.Limits.MaxRequestBodySize = 200 * 1024 * 1024;
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
